@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_menu_vertical.xml" value="0.274" />
+        <entry key="app/src/main/res/font/courgette.xml" value="0.3943589743589744" />
+        <entry key="app/src/main/res/font/nunito.xml" value="0.3933333333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3582427536231884" />
+        <entry key="app/src/main/res/layout/bottom_sheet.xml" value="0.3692708333333333" />
+        <entry key="app/src/main/res/layout/cv.xml" value="0.19010416666666666" />
+        <entry key="app/src/main/res/layout/fragment_browse.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2833333333333333" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.23541666666666666" />
+        <entry key="app/src/main/res/layout/hashtag_input.xml" value="0.3692708333333333" />
+        <entry key="app/src/main/res/layout/hashtag_item.xml" value="0.3692708333333333" />
+        <entry key="app/src/main/res/layout/story_item.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/tweet_item.xml" value="0.25547445255474455" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19114583333333332" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
