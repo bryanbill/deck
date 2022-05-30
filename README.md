@@ -11,7 +11,8 @@
 ## Overall Project Description
 
 - Deck is a Twitter Client App for tracking your favorite tweets, users and hashtags.
-
+### Design File
+[Figma](https://www.figma.com/file/sqw6PAR1uJduxErauUFuzB/deck?node-id=0%3A1)
 ## Setup Instructions
 
 ### Clone the repository
