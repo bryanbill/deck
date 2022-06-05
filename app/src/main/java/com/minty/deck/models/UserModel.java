@@ -8,9 +8,10 @@ public class UserModel {
     private String bio;
     private String location;
     private static UserModel userModel;
-    public UserModel(String userName,
+    public UserModel(String id,String userName,
                      String displayName, String profileImageUrl,
                      String bio, String location) {
+        this.id = id;
         this.userName = userName;
         this.displayName = displayName;
         this.profileImageUrl = profileImageUrl;
