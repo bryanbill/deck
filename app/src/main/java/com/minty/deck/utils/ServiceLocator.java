@@ -13,10 +13,6 @@ public class ServiceLocator {
         return instance;
     }
 
-    public void init(App app) {
-        app.getAppComponent().inject(this);
-    }
-
     public Navigator getNavigator() {
         return new Navigator();
     }
