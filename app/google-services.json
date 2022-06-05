@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "737912266976",
+    "project_id": "deck-19e6b",
+    "storage_bucket": "deck-19e6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737912266976:android:9685d1a8cdae647a8b7085",
+        "android_client_info": {
+          "package_name": "com.minty.deck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737912266976-h7002g4mhfl4hg29h58onha8b9lhh8cl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.minty.deck",
+            "certificate_hash": "6e2e52f96142c35eb6f94077d1a2d2eb23b6bdc1"
+          }
+        },
+        {
+          "client_id": "737912266976-v8v0plbrba308o5n3tl2ack1heqchh5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgUM8YF6YhkKGl5Ku6256Fz1BXcocDKcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737912266976-v8v0plbrba308o5n3tl2ack1heqchh5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

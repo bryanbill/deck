@@ -66,9 +66,9 @@ public class HomeFragment extends Fragment {
                             .getLayoutParams()
                             .height = ViewGroup.LayoutParams.MATCH_PARENT;
                 } else {
-//                    binding.tweets.getLayoutParams().height = originalHeight;
-//                    binding.linearLayout.getLayoutParams().height = originalHeight2;
-//                    binding.linearLayout.setVisibility(View.VISIBLE);
+                    binding.tweets.getLayoutParams().height = originalHeight;
+                    binding.linearLayout.getLayoutParams().height = originalHeight2;
+                    binding.linearLayout.setVisibility(View.VISIBLE);
                 }
             }
         });
