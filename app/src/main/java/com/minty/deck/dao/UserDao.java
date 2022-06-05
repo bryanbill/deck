@@ -15,6 +15,8 @@ public class UserDao implements IUser {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void setAuthResult(AuthResult authResult) {
+        Log.d("UserDao", "setAuthResult: " +
+                authResult.getAdditionalUserInfo().getProfile());
         new UserModel(
                 authResult.getAdditionalUserInfo().getProfile().get("id").toString(),
                 authResult.getAdditionalUserInfo().getUsername(),

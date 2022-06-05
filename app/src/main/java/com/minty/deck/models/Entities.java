@@ -1,11 +1,15 @@
 
 package com.minty.deck.models;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Entities {
+@Generated("jsonschema2pojo")
+public class Entities implements Serializable
+{
 
     @SerializedName("hashtags")
     @Expose
@@ -18,7 +22,30 @@ public class Entities {
     private List<UserMention> userMentions = null;
     @SerializedName("urls")
     @Expose
-    private List<Object> urls = null;
+    private List<Url> urls = null;
+    private final static long serialVersionUID = 812645277654005750L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Entities() {
+    }
+
+    /**
+     * 
+     * @param urls
+     * @param hashtags
+     * @param userMentions
+     * @param symbols
+     */
+    public Entities(List<Object> hashtags, List<Object> symbols, List<UserMention> userMentions, List<Url> urls) {
+        super();
+        this.hashtags = hashtags;
+        this.symbols = symbols;
+        this.userMentions = userMentions;
+        this.urls = urls;
+    }
 
     public List<Object> getHashtags() {
         return hashtags;
@@ -44,11 +71,11 @@ public class Entities {
         this.userMentions = userMentions;
     }
 
-    public List<Object> getUrls() {
+    public List<Url> getUrls() {
         return urls;
     }
 
-    public void setUrls(List<Object> urls) {
+    public void setUrls(List<Url> urls) {
         this.urls = urls;
     }
 

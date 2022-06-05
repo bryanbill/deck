@@ -1,11 +1,15 @@
 
 package com.minty.deck.models;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+@Generated("jsonschema2pojo")
+public class User implements Serializable
+{
 
     @SerializedName("id")
     @Expose
@@ -27,10 +31,10 @@ public class User {
     private String description;
     @SerializedName("url")
     @Expose
-    private String url;
+    private Object url;
     @SerializedName("entities")
     @Expose
-    private Entities entities;
+    private Entities__1 entities;
     @SerializedName("protected")
     @Expose
     private Boolean _protected;
@@ -81,10 +85,10 @@ public class User {
     private String profileBackgroundColor;
     @SerializedName("profile_background_image_url")
     @Expose
-    private Object profileBackgroundImageUrl;
+    private String profileBackgroundImageUrl;
     @SerializedName("profile_background_image_url_https")
     @Expose
-    private Object profileBackgroundImageUrlHttps;
+    private String profileBackgroundImageUrlHttps;
     @SerializedName("profile_background_tile")
     @Expose
     private Boolean profileBackgroundTile;
@@ -136,6 +140,107 @@ public class User {
     @SerializedName("withheld_in_countries")
     @Expose
     private List<Object> withheldInCountries = null;
+    private final static long serialVersionUID = -5087535714311493695L;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public User() {
+    }
+
+    /**
+     * 
+     * @param geoEnabled
+     * @param description
+     * @param profileTextColor
+     * @param screenName
+     * @param contributorsEnabled
+     * @param profileUseBackgroundImage
+     * @param createdAt
+     * @param profileBackgroundImageUrl
+     * @param _protected
+     * @param id
+     * @param lang
+     * @param profileImageUrl
+     * @param hasExtendedProfile
+     * @param defaultProfileImage
+     * @param idStr
+     * @param profileSidebarBorderColor
+     * @param statusesCount
+     * @param utcOffset
+     * @param profileBackgroundTile
+     * @param profileBackgroundImageUrlHttps
+     * @param verified
+     * @param profileBackgroundColor
+     * @param favouritesCount
+     * @param timeZone
+     * @param friendsCount
+     * @param defaultProfile
+     * @param profileLinkColor
+     * @param isTranslator
+     * @param listedCount
+     * @param url
+     * @param profileBannerUrl
+     * @param profileSidebarFillColor
+     * @param isTranslationEnabled
+     * @param translatorType
+     * @param entities
+     * @param profileImageUrlHttps
+     * @param following
+     * @param name
+     * @param location
+     * @param followersCount
+     * @param notifications
+     * @param withheldInCountries
+     * @param followRequestSent
+     */
+    public User(Long id, String idStr, String name, String screenName, String location, String description, Object url, Entities__1 entities, Boolean _protected, Integer followersCount, Integer friendsCount, Integer listedCount, String createdAt, Integer favouritesCount, Object utcOffset, Object timeZone, Boolean geoEnabled, Boolean verified, Integer statusesCount, Object lang, Boolean contributorsEnabled, Boolean isTranslator, Boolean isTranslationEnabled, String profileBackgroundColor, String profileBackgroundImageUrl, String profileBackgroundImageUrlHttps, Boolean profileBackgroundTile, String profileImageUrl, String profileImageUrlHttps, String profileBannerUrl, String profileLinkColor, String profileSidebarBorderColor, String profileSidebarFillColor, String profileTextColor, Boolean profileUseBackgroundImage, Boolean hasExtendedProfile, Boolean defaultProfile, Boolean defaultProfileImage, Object following, Object followRequestSent, Object notifications, String translatorType, List<Object> withheldInCountries) {
+        super();
+        this.id = id;
+        this.idStr = idStr;
+        this.name = name;
+        this.screenName = screenName;
+        this.location = location;
+        this.description = description;
+        this.url = url;
+        this.entities = entities;
+        this._protected = _protected;
+        this.followersCount = followersCount;
+        this.friendsCount = friendsCount;
+        this.listedCount = listedCount;
+        this.createdAt = createdAt;
+        this.favouritesCount = favouritesCount;
+        this.utcOffset = utcOffset;
+        this.timeZone = timeZone;
+        this.geoEnabled = geoEnabled;
+        this.verified = verified;
+        this.statusesCount = statusesCount;
+        this.lang = lang;
+        this.contributorsEnabled = contributorsEnabled;
+        this.isTranslator = isTranslator;
+        this.isTranslationEnabled = isTranslationEnabled;
+        this.profileBackgroundColor = profileBackgroundColor;
+        this.profileBackgroundImageUrl = profileBackgroundImageUrl;
+        this.profileBackgroundImageUrlHttps = profileBackgroundImageUrlHttps;
+        this.profileBackgroundTile = profileBackgroundTile;
+        this.profileImageUrl = profileImageUrl;
+        this.profileImageUrlHttps = profileImageUrlHttps;
+        this.profileBannerUrl = profileBannerUrl;
+        this.profileLinkColor = profileLinkColor;
+        this.profileSidebarBorderColor = profileSidebarBorderColor;
+        this.profileSidebarFillColor = profileSidebarFillColor;
+        this.profileTextColor = profileTextColor;
+        this.profileUseBackgroundImage = profileUseBackgroundImage;
+        this.hasExtendedProfile = hasExtendedProfile;
+        this.defaultProfile = defaultProfile;
+        this.defaultProfileImage = defaultProfileImage;
+        this.following = following;
+        this.followRequestSent = followRequestSent;
+        this.notifications = notifications;
+        this.translatorType = translatorType;
+        this.withheldInCountries = withheldInCountries;
+    }
 
     public Long getId() {
         return id;
@@ -185,19 +290,19 @@ public class User {
         this.description = description;
     }
 
-    public String getUrl() {
+    public Object getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Object url) {
         this.url = url;
     }
 
-    public Entities getEntities() {
+    public Entities__1 getEntities() {
         return entities;
     }
 
-    public void setEntities(Entities entities) {
+    public void setEntities(Entities__1 entities) {
         this.entities = entities;
     }
 
@@ -329,19 +434,19 @@ public class User {
         this.profileBackgroundColor = profileBackgroundColor;
     }
 
-    public Object getProfileBackgroundImageUrl() {
+    public String getProfileBackgroundImageUrl() {
         return profileBackgroundImageUrl;
     }
 
-    public void setProfileBackgroundImageUrl(Object profileBackgroundImageUrl) {
+    public void setProfileBackgroundImageUrl(String profileBackgroundImageUrl) {
         this.profileBackgroundImageUrl = profileBackgroundImageUrl;
     }
 
-    public Object getProfileBackgroundImageUrlHttps() {
+    public String getProfileBackgroundImageUrlHttps() {
         return profileBackgroundImageUrlHttps;
     }
 
-    public void setProfileBackgroundImageUrlHttps(Object profileBackgroundImageUrlHttps) {
+    public void setProfileBackgroundImageUrlHttps(String profileBackgroundImageUrlHttps) {
         this.profileBackgroundImageUrlHttps = profileBackgroundImageUrlHttps;
     }
 

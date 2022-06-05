@@ -1,14 +1,23 @@
 package com.minty.deck.interfaces;
 
+import com.minty.deck.models.Status;
 import com.minty.deck.models.TweetResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
 public interface ITwitterApi {
-    @GET("/1.1/statuses/user_timeline.json")
-    Call<TweetResponse> getTimelineTweets(
-            @Query("screen_name") String screenName
+
+
+    @Headers("Content-Type: application/json")
+    @GET("statuses/user_timeline.json")
+    Call<List<Status>> getTimelineTweets(
+            @Query("screen_name") String screenName,
+            @Query("count") int count
     );
+
 }

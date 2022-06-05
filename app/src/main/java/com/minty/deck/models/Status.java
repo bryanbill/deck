@@ -1,10 +1,14 @@
 
 package com.minty.deck.models;
 
+import java.io.Serializable;
+import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RetweetedStatus {
+@Generated("jsonschema2pojo")
+public class Status implements Serializable
+{
 
     @SerializedName("created_at")
     @Expose
@@ -24,24 +28,27 @@ public class RetweetedStatus {
     @SerializedName("entities")
     @Expose
     private Entities entities;
+    @SerializedName("metadata")
+    @Expose
+    private Metadata metadata;
     @SerializedName("source")
     @Expose
     private String source;
     @SerializedName("in_reply_to_status_id")
     @Expose
-    private Object inReplyToStatusId;
+    private Long inReplyToStatusId;
     @SerializedName("in_reply_to_status_id_str")
     @Expose
-    private Object inReplyToStatusIdStr;
+    private String inReplyToStatusIdStr;
     @SerializedName("in_reply_to_user_id")
     @Expose
-    private Object inReplyToUserId;
+    private Long inReplyToUserId;
     @SerializedName("in_reply_to_user_id_str")
     @Expose
-    private Object inReplyToUserIdStr;
+    private String inReplyToUserIdStr;
     @SerializedName("in_reply_to_screen_name")
     @Expose
-    private Object inReplyToScreenName;
+    private String inReplyToScreenName;
     @SerializedName("user")
     @Expose
     private User user;
@@ -72,12 +79,93 @@ public class RetweetedStatus {
     @SerializedName("retweeted")
     @Expose
     private Boolean retweeted;
-    @SerializedName("possibly_sensitive")
-    @Expose
-    private Boolean possiblySensitive;
     @SerializedName("lang")
     @Expose
     private String lang;
+    private final static long serialVersionUID = 3380064459400470860L;
+
+    @SerializedName("retweeted_status")
+    @Expose
+    private Status retweetedStatus;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public Status() {
+    }
+
+    /**
+     * 
+     * @param idStr
+     * @param metadata
+     * @param inReplyToUserId
+     * @param coordinates
+     * @param truncated
+     * @param source
+     * @param retweeted
+     * @param geo
+     * @param isQuoteStatus
+     * @param createdAt
+     * @param inReplyToScreenName
+     * @param entities
+     * @param inReplyToStatusId
+     * @param inReplyToStatusIdStr
+     * @param id
+     * @param text
+     * @param place
+     * @param contributors
+     * @param inReplyToUserIdStr
+     * @param lang
+     * @param user
+     * @param retweetCount
+     * @param favoriteCount
+     * @param favorited
+     */
+    public Status(String createdAt, Long id, String idStr, String text, Boolean truncated, Entities entities, Metadata metadata, String source, Long inReplyToStatusId, String inReplyToStatusIdStr, Long inReplyToUserId, String inReplyToUserIdStr, String inReplyToScreenName, User user, Object geo, Object coordinates, Object place, Object contributors, Boolean isQuoteStatus, Integer retweetCount, Integer favoriteCount, Boolean favorited, Boolean retweeted, String lang, Status retweetedStatus) {
+        super();
+        this.createdAt = createdAt;
+        this.id = id;
+        this.idStr = idStr;
+        this.text = text;
+        this.truncated = truncated;
+        this.entities = entities;
+        this.metadata = metadata;
+        this.source = source;
+        this.inReplyToStatusId = inReplyToStatusId;
+        this.inReplyToStatusIdStr = inReplyToStatusIdStr;
+        this.inReplyToUserId = inReplyToUserId;
+        this.inReplyToUserIdStr = inReplyToUserIdStr;
+        this.inReplyToScreenName = inReplyToScreenName;
+        this.user = user;
+        this.geo = geo;
+        this.coordinates = coordinates;
+        this.place = place;
+        this.contributors = contributors;
+        this.isQuoteStatus = isQuoteStatus;
+        this.retweetCount = retweetCount;
+        this.favoriteCount = favoriteCount;
+        this.favorited = favorited;
+        this.retweeted = retweeted;
+        this.lang = lang;
+        this.retweetedStatus = retweetedStatus;
+    }
+
+    public Boolean getQuoteStatus() {
+        return isQuoteStatus;
+    }
+
+    public void setQuoteStatus(Boolean quoteStatus) {
+        isQuoteStatus = quoteStatus;
+    }
+
+    public Status getRetweetedStatus() {
+        return retweetedStatus;
+    }
+
+    public void setRetweetedStatus(Status retweetedStatus) {
+        this.retweetedStatus = retweetedStatus;
+    }
 
     public String getCreatedAt() {
         return createdAt;
@@ -127,6 +215,14 @@ public class RetweetedStatus {
         this.entities = entities;
     }
 
+    public Metadata getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Metadata metadata) {
+        this.metadata = metadata;
+    }
+
     public String getSource() {
         return source;
     }
@@ -135,43 +231,43 @@ public class RetweetedStatus {
         this.source = source;
     }
 
-    public Object getInReplyToStatusId() {
+    public Long getInReplyToStatusId() {
         return inReplyToStatusId;
     }
 
-    public void setInReplyToStatusId(Object inReplyToStatusId) {
+    public void setInReplyToStatusId(Long inReplyToStatusId) {
         this.inReplyToStatusId = inReplyToStatusId;
     }
 
-    public Object getInReplyToStatusIdStr() {
+    public String getInReplyToStatusIdStr() {
         return inReplyToStatusIdStr;
     }
 
-    public void setInReplyToStatusIdStr(Object inReplyToStatusIdStr) {
+    public void setInReplyToStatusIdStr(String inReplyToStatusIdStr) {
         this.inReplyToStatusIdStr = inReplyToStatusIdStr;
     }
 
-    public Object getInReplyToUserId() {
+    public Long getInReplyToUserId() {
         return inReplyToUserId;
     }
 
-    public void setInReplyToUserId(Object inReplyToUserId) {
+    public void setInReplyToUserId(Long inReplyToUserId) {
         this.inReplyToUserId = inReplyToUserId;
     }
 
-    public Object getInReplyToUserIdStr() {
+    public String getInReplyToUserIdStr() {
         return inReplyToUserIdStr;
     }
 
-    public void setInReplyToUserIdStr(Object inReplyToUserIdStr) {
+    public void setInReplyToUserIdStr(String inReplyToUserIdStr) {
         this.inReplyToUserIdStr = inReplyToUserIdStr;
     }
 
-    public Object getInReplyToScreenName() {
+    public String getInReplyToScreenName() {
         return inReplyToScreenName;
     }
 
-    public void setInReplyToScreenName(Object inReplyToScreenName) {
+    public void setInReplyToScreenName(String inReplyToScreenName) {
         this.inReplyToScreenName = inReplyToScreenName;
     }
 
@@ -253,14 +349,6 @@ public class RetweetedStatus {
 
     public void setRetweeted(Boolean retweeted) {
         this.retweeted = retweeted;
-    }
-
-    public Boolean getPossiblySensitive() {
-        return possiblySensitive;
-    }
-
-    public void setPossiblySensitive(Boolean possiblySensitive) {
-        this.possiblySensitive = possiblySensitive;
     }
 
     public String getLang() {

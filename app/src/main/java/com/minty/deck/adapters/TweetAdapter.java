@@ -13,15 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.minty.deck.R;
-import com.minty.deck.models.TweetModel;
+import com.minty.deck.models.Status;
 
 import java.util.List;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> {
     private Context context;
-    private List<TweetModel> tweetList;
+    private List<Status> tweetList;
 
-    public TweetAdapter(Context context, List<TweetModel> tweetList) {
+    public TweetAdapter(Context context, List<Status> tweetList) {
         this.context = context;
         this.tweetList = tweetList;
     }
@@ -35,23 +35,32 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String url = tweetList.get(position).getImageUrl();
-        if(url != null && !url.isEmpty()) {
-            Glide.with(context).load(url).centerCrop().into(holder.imageView);
-        }else{
-            ViewGroup.LayoutParams params = holder.relativeLayout.getLayoutParams();
-            holder.imageView.setVisibility(View.GONE);
-            params.height = params.WRAP_CONTENT;
+        //Check if the tweet is a retweet
+        if (tweetList.get(position).getRetweetedStatus() != null) {
+            //If it is a retweet, set the text to the retweeted status
+            holder.tweet.setText(tweetList.get(position).getRetweetedStatus().getText());
+            //Set the retweeted status image
+            Glide.with(context)
+                    .load(tweetList.get(position).getRetweetedStatus().getUser().getProfileImageUrl())
+                    .fitCenter()
+                    .into(holder.avatar);
+            //Set the retweeted status user name
+            holder.username.setText("@" + tweetList.get(position).getRetweetedStatus().getUser().getScreenName());
+            //Set the retweeted status display name
+            holder.displayName.setText(tweetList.get(position).getRetweetedStatus().getUser().getName());
+        } else {
+            //If it is not a retweet, set the text to the original status
+            holder.tweet.setText(tweetList.get(position).getText());
+            //Set the original status image
+            Glide.with(context)
+                    .load(tweetList.get(position).getUser().getProfileImageUrl())
+                    .fitCenter()
+                    .into(holder.avatar);
+            //Set the original status user name
+            holder.username.setText("@" + tweetList.get(position).getUser().getScreenName());
+            //Set the original status display name
+            holder.displayName.setText(tweetList.get(position).getUser().getName());
         }
-        Glide.with(context).load(tweetList.get(position).getUser().getProfileImageUrl()).centerCrop()
-                .into(holder.avatar);
-        holder.username.setText(tweetList.get(position).getUser().getUserName());
-        holder.displayName.setText(tweetList.get(position).getUser().getDisplayName());
-        holder.tweet.setText(tweetList.get(position).getTweet());
-
-
-
-
     }
 
     @Override
@@ -64,6 +73,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
         private TextView username, displayName, tweet;
         private RelativeLayout relativeLayout;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             relativeLayout = itemView.findViewById(R.id.tweet_item);
