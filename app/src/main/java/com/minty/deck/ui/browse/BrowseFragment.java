@@ -43,10 +43,10 @@ public class BrowseFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false);
         binding.recyclerViewTweets.setLayoutManager(linearLayoutManager);
-        homeViewModel.getTweetList().observe(getViewLifecycleOwner(), tweetList -> {
-            Log.d("HomeFragment", "tweetList: " + tweetList.size());
-            binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), tweetList));
-        });
+//        homeViewModel.getTweetList().observe(getViewLifecycleOwner(), tweetList -> {
+//            Log.d("HomeFragment", "tweetList: " + tweetList.size());
+//            binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), tweetList));
+//        });
         final int originalHeight = binding.hashtagTweets.getLayoutParams().height;
         final int originalHeight2 = binding.hashtagLayout.getLayoutParams().height;
         binding.recyclerViewTweets.addOnScrollListener(new RecyclerView.OnScrollListener() {

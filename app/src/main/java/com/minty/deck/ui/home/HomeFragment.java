@@ -43,15 +43,15 @@ public class HomeFragment extends Fragment {
         binding.recyclerView.setLayoutManager(linearLayoutManager);
         binding.recyclerViewTweets.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        homeViewModel.getStoryList().observe(getViewLifecycleOwner(), storyList -> {
-            Log.d("HomeFragment", "storyList: " + storyList.size());
-            binding.recyclerView.setAdapter(new StoryAdapter(getContext(), storyList));
-        });
-
-        homeViewModel.getTweetList().observe(getViewLifecycleOwner(), tweetList -> {
-            Log.d("HomeFragment", "tweetList: " + tweetList.size());
-            binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), tweetList));
-        });
+//        homeViewModel.getStoryList().observe(getViewLifecycleOwner(), storyList -> {
+//            Log.d("HomeFragment", "storyList: " + storyList.size());
+//            binding.recyclerView.setAdapter(new StoryAdapter(getContext(), storyList));
+//        });
+//
+//        homeViewModel.getTweetList().observe(getViewLifecycleOwner(), tweetList -> {
+//            Log.d("HomeFragment", "tweetList: " + tweetList.size());
+//            binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), tweetList));
+//        });
         final int originalHeight = binding.tweets.getLayoutParams().height;
         final int originalHeight2 = binding.linearLayout.getLayoutParams().height;
         //Remove stories from view on scroll up

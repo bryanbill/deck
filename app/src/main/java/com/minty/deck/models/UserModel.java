@@ -1,13 +1,13 @@
 package com.minty.deck.models;
 
 public class UserModel {
-    private int id;
+    private String id;
     private String userName;
     private String displayName;
     private String profileImageUrl;
     private String bio;
     private String location;
-
+    private static UserModel userModel;
     public UserModel(String userName,
                      String displayName, String profileImageUrl,
                      String bio, String location) {
@@ -16,13 +16,13 @@ public class UserModel {
         this.profileImageUrl = profileImageUrl;
         this.bio = bio;
         this.location = location;
+        userModel = this;
     }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -64,5 +64,9 @@ public class UserModel {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public static UserModel getModel() {
+        return userModel;
     }
 }

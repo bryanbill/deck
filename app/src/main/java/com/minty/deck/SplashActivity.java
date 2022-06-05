@@ -3,6 +3,7 @@ package com.minty.deck;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.OAuthProvider;
 import com.minty.deck.databinding.ActivityMainBinding;
 import com.minty.deck.databinding.ActivitySplashBinding;
 import com.minty.deck.utils.Navigator;
+import com.minty.deck.utils.ServiceLocator;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -53,6 +55,7 @@ public class SplashActivity extends AppCompatActivity {
                         new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
+
                                 Log.d("SplashActivity", "onSuccess: " + authResult.getUser().getDisplayName());
                             }
                         };
@@ -69,6 +72,7 @@ public class SplashActivity extends AppCompatActivity {
         } else {
             mAuth.startActivityForSignInWithProvider(this, provider.build())
                     .addOnSuccessListener(authResult -> {
+                        ServiceLocator.getInstance().getUserDao().setAuthResult(authResult);
                         // User is signed in.
                         Navigator.pushAndRemove(SplashActivity.this, MainActivity.class);
                     })
