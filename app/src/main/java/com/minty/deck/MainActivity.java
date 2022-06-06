@@ -13,10 +13,11 @@ import androidx.navigation.ui.NavigationUI;
 import com.minty.deck.databinding.ActivityMainBinding;
 import com.minty.deck.ui.sheets.ModalBottomSheet;
 
+import butterknife.BindView;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

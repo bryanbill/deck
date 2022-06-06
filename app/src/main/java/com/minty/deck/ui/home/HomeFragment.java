@@ -14,13 +14,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.minty.deck.R;
 import com.minty.deck.adapters.StoryAdapter;
 import com.minty.deck.adapters.TweetAdapter;
 import com.minty.deck.databinding.FragmentHomeBinding;
 import com.minty.deck.models.UserModel;
-import com.minty.deck.utils.Navigator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,8 +49,7 @@ public class HomeFragment extends Fragment {
             Log.d("HomeFragment", "tweetList: " + tweetList.size());
             binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), tweetList));
         });
-        final int originalHeight = binding.tweets.getLayoutParams().height;
-        final int originalHeight2 = binding.linearLayout.getLayoutParams().height;
+
         //Remove stories from view on scroll up
         binding.recyclerViewTweets.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -65,10 +61,6 @@ public class HomeFragment extends Fragment {
                     binding.tweets
                             .getLayoutParams()
                             .height = ViewGroup.LayoutParams.MATCH_PARENT;
-                } else {
-//                    binding.tweets.getLayoutParams().height = originalHeight;
-//                    binding.linearLayout.getLayoutParams().height = originalHeight2;
-//                    binding.linearLayout.setVisibility(View.VISIBLE);
                 }
             }
         });

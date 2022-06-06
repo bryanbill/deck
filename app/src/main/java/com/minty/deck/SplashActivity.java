@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.minty.deck.databinding.ActivityMainBinding;
 import com.minty.deck.databinding.ActivitySplashBinding;
@@ -15,17 +16,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
+import butterknife.BindView;
+
 
 public class SplashActivity extends AppCompatActivity {
 
     private ActivitySplashBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySplashBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
         // Check if view is mounted
         if (binding.getRoot() != null) {
             // Defer the navigation to the next thread after 3 seconds
