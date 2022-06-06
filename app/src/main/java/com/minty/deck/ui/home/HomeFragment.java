@@ -55,6 +55,7 @@ public class HomeFragment extends Fragment {
         twitterApi = ApiClient.getClient();
         Call<UserResponse> call = twitterApi.getFollowers("__omondi");
         List<User> users = new ArrayList<>();
+        List<Status> statuses = new ArrayList<>();
         call.enqueue(new retrofit2.Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
@@ -66,25 +67,26 @@ public class HomeFragment extends Fragment {
                     binding.recyclerView.setLayoutManager(linearLayoutManager);
                     binding.recyclerView.setAdapter(new StoryAdapter(getContext(), users));
                     LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-
-                    for (User user : users) {
-                        Call<List<Status>> call2 = twitterApi.getTimelineTweets(user.getScreenName());
+                    for (int i = 0; i < users.size(); i++) {
+                        Call<List<Status>> call2 = twitterApi.getTimelineTweets(users.get(i).getScreenName());
                         call2.enqueue(new retrofit2.Callback<List<Status>>() {
                             @Override
-                            public void onResponse(Call<List<Status>> call, Response<List<Status>> response) {
+                            public void onResponse(Call<List<Status>> call,
+                                                   Response<List<Status>> response) {
                                 if (response.isSuccessful()) {
-                                    List<Status> statuses = response.body();
-                                    binding.recyclerViewTweets.setLayoutManager(linearLayoutManager2);
-                                    binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), statuses));
+                                    statuses.addAll(response.body());
+                                    binding.recyclerViewTweets.getAdapter().notifyDataSetChanged();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<List<Status>> call, Throwable t) {
-                                Log.d("HomeFragment", "onFailure: " + t.getMessage());
+                                Log.d("HomeViewModel", "onFailure: " + t.getMessage());
                             }
                         });
                     }
+                    binding.recyclerViewTweets.setLayoutManager(linearLayoutManager2);
+                    binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), statuses));
                 } else {
                     Log.d("HomeFragment", "onResponse: Status Code" + response.code());
                 }

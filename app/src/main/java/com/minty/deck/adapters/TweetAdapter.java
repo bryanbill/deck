@@ -15,7 +15,10 @@ import com.bumptech.glide.Glide;
 import com.minty.deck.R;
 import com.minty.deck.models.Status;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> {
     private Context context;
@@ -24,6 +27,20 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     public TweetAdapter(Context context, List<Status> tweetList) {
         this.context = context;
         this.tweetList = tweetList;
+    }
+    public void shuffleList(List<Status> list) {
+        List<Status> temp = new ArrayList<Status>(list);
+        Random rand = new Random();
+
+        for (int i = 0; i < list.size(); i++) {
+            int newPos = rand.nextInt(list.size());
+            while (newPos == i||temp.get(newPos)==null) {
+                newPos = rand.nextInt(list.size());
+            }
+            list.set(i, temp.get(newPos));
+            temp.set(newPos,null);
+        }
+        this.tweetList = temp;
     }
 
     @NonNull
