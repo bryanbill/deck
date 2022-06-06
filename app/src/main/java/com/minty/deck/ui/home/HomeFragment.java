@@ -64,31 +64,35 @@ public class HomeFragment extends Fragment {
                     users.addAll(userResponse.getUsers());
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
                             LinearLayoutManager.HORIZONTAL, false);
-                    binding.recyclerView.setLayoutManager(linearLayoutManager);
-                    binding.recyclerView.setAdapter(new StoryAdapter(getContext(), users));
-                    LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-                    for (int i = 0; i < users.size(); i++) {
-                        Call<List<Status>> call2 = twitterApi.getTimelineTweets(users.get(i).getScreenName());
-                        call2.enqueue(new retrofit2.Callback<List<Status>>() {
-                            @Override
-                            public void onResponse(Call<List<Status>> call,
-                                                   Response<List<Status>> response) {
-                                if (response.isSuccessful()) {
-                                    statuses.addAll(response.body());
-                                    binding.recyclerViewTweets.getAdapter().notifyDataSetChanged();
+                    if (binding != null) {
+                        binding.recyclerView.setLayoutManager(linearLayoutManager);
+                        binding.recyclerView.setAdapter(new StoryAdapter(getContext(), users));
+                        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                        for (int i = 0; i < users.size(); i++) {
+                            Call<List<Status>> call2 = twitterApi.getTimelineTweets(users.get(i).getScreenName());
+                            call2.enqueue(new retrofit2.Callback<List<Status>>() {
+                                @Override
+                                public void onResponse(Call<List<Status>> call,
+                                                       Response<List<Status>> response) {
+                                    if (response.isSuccessful()) {
+                                        statuses.addAll(response.body());
+                                        if (binding != null) {
+                                            binding.recyclerViewTweets.getAdapter().notifyDataSetChanged();
+                                        }
+                                    }
                                 }
-                            }
 
-                            @Override
-                            public void onFailure(Call<List<Status>> call, Throwable t) {
-                                Log.d("HomeViewModel", "onFailure: " + t.getMessage());
-                            }
-                        });
+                                @Override
+                                public void onFailure(Call<List<Status>> call, Throwable t) {
+                                    Log.d("HomeViewModel", "onFailure: " + t.getMessage());
+                                }
+                            });
+                        }
+                        binding.recyclerViewTweets.setLayoutManager(linearLayoutManager2);
+                        binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), statuses));
+                    } else {
+                        Log.d("HomeFragment", "onResponse: Status Code" + response.code());
                     }
-                    binding.recyclerViewTweets.setLayoutManager(linearLayoutManager2);
-                    binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), statuses));
-                } else {
-                    Log.d("HomeFragment", "onResponse: Status Code" + response.code());
                 }
             }
 

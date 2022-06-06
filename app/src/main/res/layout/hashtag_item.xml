@@ -12,6 +12,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:id="@+id/hashtag_item"
         app:cardCornerRadius="@dimen/activity_vertical_margin"
         app:strokeColor="?attr/colorPrimary">
         <TextView

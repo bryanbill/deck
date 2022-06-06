@@ -1,6 +1,7 @@
 package com.minty.deck.adapters;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +17,16 @@ import com.minty.deck.models.HashtagModel;
 import com.minty.deck.ui.browse.BrowseFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HashtagAdapter extends RecyclerView.Adapter<HashtagAdapter.ViewHolder> {
 
     private Context context;
     private List<HashtagModel> mHashtagList;
+
+    Map<TextView, Integer> map = new HashMap<>();
 
     public HashtagAdapter(Context context, List<HashtagModel> hashtagList) {
         this.context = context;
@@ -39,6 +44,7 @@ public class HashtagAdapter extends RecyclerView.Adapter<HashtagAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HashtagModel hashtagModel = mHashtagList.get(position);
         holder.hashtag.setText(hashtagModel.getHashtag());
+
         if (position == mHashtagList.size() - 1) {
             HashtagModel lastHashtag = mHashtagList.get(position);
 
@@ -46,8 +52,8 @@ public class HashtagAdapter extends RecyclerView.Adapter<HashtagAdapter.ViewHold
             holder.hashtag.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if((ViewGroup)holder.hashTagView.getParent() != null) {
-                        ((ViewGroup)holder.hashTagView.getParent()).removeView(holder.hashTagView);
+                    if ((ViewGroup) holder.hashTagView.getParent() != null) {
+                        ((ViewGroup) holder.hashTagView.getParent()).removeView(holder.hashTagView);
                     }
                     EditText editText = (EditText) holder.hashTagView
                             .findViewById(R.id.input_hashtag);
@@ -68,6 +74,20 @@ public class HashtagAdapter extends RecyclerView.Adapter<HashtagAdapter.ViewHold
 
                             })
                             .show();
+                }
+            });
+        } else {
+            holder.hashtag.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (TextView textView : map.keySet()) {
+                        textView.setBackgroundColor(map.get(textView));
+                    }
+                    int color = 0x00000000;
+                    map.put(holder.hashtag, color);
+                    holder.hashtag
+                            .setBackgroundColor(context.getResources()
+                                    .getColor(R.color.purple));
                 }
             });
         }
