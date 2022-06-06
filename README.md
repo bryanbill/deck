@@ -35,7 +35,7 @@ SSH: `git clone git@github.com:bryanbill/deck.git`
 
 ## Contributing
 
-Contributions to the project are welcome. Fork this repo to contribute.u
+Contributions to the project are welcome. Fork this repo to contribute.
 
 
 ## Licence
