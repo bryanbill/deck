@@ -35,8 +35,8 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull StoryAdapter.ViewHolder holder, int position) {
-        Glide.with(context).load(storyList.get(position).getProfileImageUrl()).fitCenter().into(holder.imageView);
-        holder.textView.setText(storyList.get(position).getUserName());
+        Glide.with(context).load(storyList.get(position).getProfileImageUrlHttps()).fitCenter().into(holder.imageView);
+        holder.textView.setText(storyList.get(position).getScreenName());
     }
 
     @Override

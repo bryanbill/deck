@@ -2,6 +2,7 @@ package com.minty.deck.interfaces;
 
 import com.minty.deck.models.Status;
 import com.minty.deck.models.TweetResponse;
+import com.minty.deck.models.UserResponse;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface ITwitterApi {
     );
 
     @GET("followers/list.json")
-    Call<TweetResponse> getFollowers(
+    Call<UserResponse> getFollowers(
             @Query("screen_name") String screenName
     );
 
