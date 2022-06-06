@@ -96,27 +96,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-        final int originalHeight = binding.recyclerViewTweets.getLayoutParams().height;
-        final int originalHeight2 = binding.linearLayout.getLayoutParams().height;
-        //Remove stories from view on scroll up
-        binding.recyclerViewTweets.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (dy > 0) {
-                    binding.linearLayout.getLayoutParams().height = 0;
-                    binding.linearLayout.setVisibility(View.GONE);
-                    binding.recyclerViewTweets
-                            .getLayoutParams()
-                            .height = ViewGroup.LayoutParams.MATCH_PARENT;
-                } else {
-                    binding.recyclerViewTweets.getLayoutParams().height = originalHeight;
-                    binding.linearLayout.getLayoutParams().height = originalHeight2;
-                    binding.linearLayout.setVisibility(View.VISIBLE);
-                }
-            }
-        });
         return root;
     }
 
