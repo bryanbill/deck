@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.minty.deck.R;
+import com.minty.deck.interfaces.IHandler;
 import com.minty.deck.models.HashtagModel;
 import com.minty.deck.ui.browse.BrowseFragment;
 
@@ -28,9 +29,12 @@ public class HashtagAdapter extends RecyclerView.Adapter<HashtagAdapter.ViewHold
 
     Map<TextView, Integer> map = new HashMap<>();
 
-    public HashtagAdapter(Context context, List<HashtagModel> hashtagList) {
+    private IHandler mHandler;
+
+    public HashtagAdapter(Context context, List<HashtagModel> hashtagList, IHandler handler) {
         this.context = context;
         this.mHashtagList = hashtagList;
+        this.mHandler = handler;
     }
 
     @NonNull
@@ -88,6 +92,7 @@ public class HashtagAdapter extends RecyclerView.Adapter<HashtagAdapter.ViewHold
                     holder.hashtag
                             .setBackgroundColor(context.getResources()
                                     .getColor(R.color.purple));
+                    mHandler.onHashtagClicked(hashtagModel.getHashtag());
                 }
             });
         }
