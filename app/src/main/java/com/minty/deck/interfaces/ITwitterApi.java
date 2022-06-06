@@ -17,8 +17,7 @@ public interface ITwitterApi {
     @Headers("Content-Type: application/json")
     @GET("statuses/user_timeline.json")
     Call<List<Status>> getTimelineTweets(
-            @Query("screen_name") String screenName,
-            @Query("count") int count
+            @Query("screen_name") String screenName
     );
 
     @GET("search/tweets.json")

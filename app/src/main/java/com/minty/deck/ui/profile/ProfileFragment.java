@@ -43,7 +43,7 @@ public class ProfileFragment extends Fragment {
         View root = binding.getRoot();
         twitterApi = ApiClient.getClient();
 
-        Call<List<Status>> call = twitterApi.getTimelineTweets(user.getUserName(), 10);
+        Call<List<Status>> call = twitterApi.getTimelineTweets(user.getUserName());
         if (user.getUserName() != null) {
             binding.authAlert.setVisibility(View.GONE);
             binding.profileName.setText(user.getDisplayName());
