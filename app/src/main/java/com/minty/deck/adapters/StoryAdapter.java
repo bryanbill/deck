@@ -12,15 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.minty.deck.R;
+import com.minty.deck.models.User;
 import com.minty.deck.models.UserModel;
 
 import java.util.List;
 
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> {
     private Context context;
-    private List<UserModel> storyList;
+    private List<User> storyList;
 
-    public StoryAdapter(Context context, List<UserModel> storyList) {
+    public StoryAdapter(Context context, List<User> storyList) {
         this.context = context;
         this.storyList = storyList;
     }

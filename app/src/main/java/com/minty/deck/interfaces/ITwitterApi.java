@@ -25,4 +25,9 @@ public interface ITwitterApi {
             @Query("q") String query
     );
 
+    @GET("followers/list.json")
+    Call<TweetResponse> getFollowers(
+            @Query("screen_name") String screenName
+    );
+
 }

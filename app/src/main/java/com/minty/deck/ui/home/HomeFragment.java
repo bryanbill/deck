@@ -18,18 +18,23 @@ import com.minty.deck.R;
 import com.minty.deck.adapters.StoryAdapter;
 import com.minty.deck.adapters.TweetAdapter;
 import com.minty.deck.databinding.FragmentHomeBinding;
+import com.minty.deck.interfaces.ITwitterApi;
+import com.minty.deck.models.User;
 import com.minty.deck.models.UserModel;
+import com.minty.deck.models.UserResponse;
+import com.minty.deck.utils.ApiClient;
 import com.minty.deck.utils.Navigator;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    private List<UserModel> storyList = new ArrayList<>();
-
+    ITwitterApi twitterApi;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -43,10 +48,10 @@ public class HomeFragment extends Fragment {
         binding.recyclerView.setLayoutManager(linearLayoutManager);
         binding.recyclerViewTweets.setLayoutManager(new LinearLayoutManager(getContext()));
 
-//        homeViewModel.getStoryList().observe(getViewLifecycleOwner(), storyList -> {
-//            Log.d("HomeFragment", "storyList: " + storyList.size());
-//            binding.recyclerView.setAdapter(new StoryAdapter(getContext(), storyList));
-//        });
+        twitterApi = ApiClient.getClient();
+       // Call<UserResponse> call = twitterApi.getFollowers("Minty_Deck");
+
+
 //
 //        homeViewModel.getTweetList().observe(getViewLifecycleOwner(), tweetList -> {
 //            Log.d("HomeFragment", "tweetList: " + tweetList.size());
