@@ -24,7 +24,7 @@ import com.minty.deck.utils.ApiClient;
 
 import retrofit2.Call;
 
-public class BrowseFragment extends Fragment {
+public class BrowseFragment extends Fragment implements AdapterCallback {
 
     private FragmentBrowseBinding binding;
     ITwitterApi twitterApi;
