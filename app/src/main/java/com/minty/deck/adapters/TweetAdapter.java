@@ -41,9 +41,14 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             holder.tweet.setText(tweetList.get(position).getRetweetedStatus().getText());
             //Set the retweeted status image
             Glide.with(context)
-                    .load(tweetList.get(position).getRetweetedStatus().getUser().getProfileImageUrl())
+                    .load(tweetList.get(position).getRetweetedStatus().getUser().getProfileImageUrlHttps())
                     .fitCenter()
                     .into(holder.avatar);
+            Glide.with(context)
+                    .load(tweetList.get(position).getRetweetedStatus()
+                    .getUser().getProfileBannerUrl())
+                    .centerCrop()
+                    .into(holder.imageView);
             //Set the retweeted status user name
             holder.username.setText("@" + tweetList.get(position).getRetweetedStatus().getUser().getScreenName());
             //Set the retweeted status display name
@@ -51,9 +56,10 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         } else {
             //If it is not a retweet, set the text to the original status
             holder.tweet.setText(tweetList.get(position).getText());
+            Glide.with(context).load(tweetList.get(position).getUser().getProfileBannerUrl()).fitCenter().into(holder.imageView);
             //Set the original status image
             Glide.with(context)
-                    .load(tweetList.get(position).getUser().getProfileImageUrl())
+                    .load(tweetList.get(position).getUser().getProfileImageUrlHttps())
                     .fitCenter()
                     .into(holder.avatar);
             //Set the original status user name
@@ -61,6 +67,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             //Set the original status display name
             holder.displayName.setText(tweetList.get(position).getUser().getName());
         }
+
     }
 
     @Override
@@ -73,7 +80,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
         private TextView username, displayName, tweet;
         private RelativeLayout relativeLayout;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             relativeLayout = itemView.findViewById(R.id.tweet_item);

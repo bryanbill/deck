@@ -20,4 +20,9 @@ public interface ITwitterApi {
             @Query("count") int count
     );
 
+    @GET("search/tweets.json")
+    Call<TweetResponse> browseTweets(
+            @Query("q") String query
+    );
+
 }

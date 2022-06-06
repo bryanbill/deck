@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.minty.deck.R;
 import com.minty.deck.adapters.TweetAdapter;
 import com.minty.deck.databinding.FragmentProfileBinding;
 import com.minty.deck.interfaces.ITwitterApi;
@@ -47,6 +48,7 @@ public class ProfileFragment extends Fragment {
             binding.authAlert.setVisibility(View.GONE);
             binding.profileName.setText(user.getDisplayName());
             binding.userName.setText("@" + user.getUserName());
+
             Glide.with(this)
                     .load(user.getProfileImageUrl())
                     .fitCenter()
@@ -69,29 +71,6 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onFailure(Call<List<Status>> call, Throwable t) {
                     t.printStackTrace();
-                }
-            });
-
-            final int recyclerHeight = binding.recyclerViewTweets.getHeight();
-            final int materialCardHeight = binding.materialCardView.getHeight();
-            final int profileImageHeight = binding.profileImage.getHeight();
-            final int userNameHeight = binding.userName.getHeight();
-            //Check if recycler view has been scrolled to the bottom
-            binding.recyclerViewTweets.addOnScrollListener(new RecyclerView.OnScrollListener() {
-                @Override
-                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                    super.onScrolled(recyclerView, dx, dy);
-                    if (dy > 0) {
-                        binding.materialCardView.getLayoutParams().height = 0;
-                        binding.profileName.getLayoutParams().height = 0;
-                        binding.userName.getLayoutParams().height = 0;
-                        binding.materialCardView.setVisibility(View.GONE);
-                        binding.profileName.setVisibility(View.GONE);
-                        binding.userName.setVisibility(View.GONE);
-                        binding.recyclerViewTweets
-                                .getLayoutParams()
-                                .height = ViewGroup.LayoutParams.MATCH_PARENT;
-                    }
                 }
             });
         } else {

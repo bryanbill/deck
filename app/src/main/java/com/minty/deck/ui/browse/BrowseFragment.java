@@ -17,12 +17,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.minty.deck.adapters.HashtagAdapter;
 import com.minty.deck.adapters.TweetAdapter;
 import com.minty.deck.databinding.FragmentBrowseBinding;
+import com.minty.deck.interfaces.ITwitterApi;
+import com.minty.deck.models.TweetResponse;
 import com.minty.deck.ui.home.HomeViewModel;
+import com.minty.deck.utils.ApiClient;
+
+import retrofit2.Call;
 
 public class BrowseFragment extends Fragment {
 
     private FragmentBrowseBinding binding;
-
+    ITwitterApi twitterApi;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         BrowseViewModel browseViewModel =
@@ -38,15 +43,30 @@ public class BrowseFragment extends Fragment {
             binding.recyclerHash.setAdapter(new HashtagAdapter(getContext(), hashtagList));
         });
 
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false);
         binding.recyclerViewTweets.setLayoutManager(linearLayoutManager);
-//        homeViewModel.getTweetList().observe(getViewLifecycleOwner(), tweetList -> {
-//            Log.d("HomeFragment", "tweetList: " + tweetList.size());
-//            binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), tweetList));
-//        });
+
+        twitterApi = ApiClient.getClient();
+
+        Call<TweetResponse> call = twitterApi.browseTweets("cars");
+        call.enqueue(new retrofit2.Callback<TweetResponse>() {
+            @Override
+            public void onResponse(Call<TweetResponse> call, retrofit2.Response<TweetResponse> response) {
+                if (response.isSuccessful()) {
+                    TweetResponse tweetResponse = response.body();
+                    binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), tweetResponse.getStatuses()));
+                } else {
+                    Log.d("BrowseFragment", "onResponse: Status Code" + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TweetResponse> call, Throwable t) {
+                Log.d("BrowseFragment", "onFailure: " + t.getMessage());
+            }
+        });
+
         final int originalHeight = binding.hashtagTweets.getLayoutParams().height;
         final int originalHeight2 = binding.hashtagLayout.getLayoutParams().height;
         binding.recyclerViewTweets.addOnScrollListener(new RecyclerView.OnScrollListener() {

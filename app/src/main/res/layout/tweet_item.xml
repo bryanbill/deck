@@ -18,49 +18,60 @@
         <LinearLayout
             android:id="@+id/info_container"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="70sp"
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                app:cardCornerRadius="25sp"
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                app:cardCornerRadius="35sp"
                 app:cardElevation="10sp">
 
                 <ImageView
                     android:id="@+id/avatar"
-                    android:layout_width="50sp"
-                    android:layout_height="50sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     />
             </com.google.android.material.card.MaterialCardView>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10sp">
 
                 <TextView
                     android:id="@+id/display_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/user_name"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/user_name"
-                    android:layout_width="790dp"
-                    android:layout_height="match_parent"
-                    android:gravity="bottom"
-                    />
 
-            </RelativeLayout>
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/display_name"
+                    app:layout_constraintVertical_bias="0.407" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
-
-                android:layout_width="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_menu_vert"></ImageView>
+                android:src="@drawable/ic_menu_vert"/>
         </LinearLayout>
 
 
@@ -79,13 +90,12 @@
            <com.google.android.material.card.MaterialCardView
                android:layout_width="match_parent"
                android:layout_height="match_parent"
-               app:cardCornerRadius="20sp">
+               android:layout_below="@+id/tweet_text"
+               app:cardCornerRadius="10sp">
                <ImageView
-                   android:layout_marginTop="4sp"
                    android:id="@+id/imageView"
                    android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:layout_below="@+id/tweet_text" />
+                   android:layout_height="match_parent" />
            </com.google.android.material.card.MaterialCardView>
         </RelativeLayout>
     </LinearLayout>
