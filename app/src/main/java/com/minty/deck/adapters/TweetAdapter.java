@@ -56,14 +56,17 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         if (tweetList.get(position).getRetweetedStatus() != null) {
             //If it is a retweet, set the text to the retweeted status
             holder.tweet.setText(tweetList.get(position).getRetweetedStatus().getText());
+
             //Set the retweeted status image
             Glide.with(context)
                     .load(tweetList.get(position).getRetweetedStatus().getUser().getProfileImageUrlHttps())
-                    .fitCenter()
+                    .centerCrop()
+                    .override(100, 100)
                     .into(holder.avatar);
             Glide.with(context)
                     .load(tweetList.get(position).getRetweetedStatus()
                     .getUser().getProfileBannerUrl())
+                    .override(holder.imageView.getWidth(), holder.imageView.getHeight())
                     .centerCrop()
                     .into(holder.imageView);
             //Set the retweeted status user name
@@ -73,7 +76,13 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         } else {
             //If it is not a retweet, set the text to the original status
             holder.tweet.setText(tweetList.get(position).getText());
-            Glide.with(context).load(tweetList.get(position).getUser().getProfileBannerUrl()).fitCenter().into(holder.imageView);
+            Glide.with(context)
+                    .load(tweetList.get(position)
+                            .getUser().getProfileBannerUrl())
+
+                    .override(holder.imageView.getWidth(), holder.imageView.getHeight())
+                    .centerCrop()
+                    .into(holder.imageView);
             //Set the original status image
             Glide.with(context)
                     .load(tweetList.get(position).getUser().getProfileImageUrlHttps())

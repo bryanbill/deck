@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="400sp"
+    android:layout_height="wrap_content"
     android:id="@+id/tweet_item"
     android:layout_margin="@dimen/activity_horizontal_margin">
 
@@ -52,7 +52,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-
                     android:id="@+id/user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -89,13 +88,13 @@
 
            <com.google.android.material.card.MaterialCardView
                android:layout_width="match_parent"
-               android:layout_height="match_parent"
+               android:layout_height="wrap_content"
                android:layout_below="@+id/tweet_text"
                app:cardCornerRadius="10sp">
                <ImageView
                    android:id="@+id/imageView"
                    android:layout_width="match_parent"
-                   android:layout_height="match_parent" />
+                   android:layout_height="200sp" />
            </com.google.android.material.card.MaterialCardView>
         </RelativeLayout>
     </LinearLayout>

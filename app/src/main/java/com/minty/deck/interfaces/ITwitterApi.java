@@ -9,6 +9,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ITwitterApi {
@@ -29,5 +30,11 @@ public interface ITwitterApi {
     Call<UserResponse> getFollowers(
             @Query("screen_name") String screenName
     );
+
+    @POST("statuses/update.json")
+    Call<Status> tweet(
+            @Query("status") String status
+    );
+
 
 }
