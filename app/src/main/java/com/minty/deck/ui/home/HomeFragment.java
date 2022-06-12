@@ -135,6 +135,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        binding.searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), statuses));
+                return false;
+            }
+        });
+
         return root;
     }
 
