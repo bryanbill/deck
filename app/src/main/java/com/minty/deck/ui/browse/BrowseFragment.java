@@ -88,7 +88,9 @@ public class BrowseFragment extends Fragment implements IHandler {
             public void onResponse(Call<TweetResponse> call, retrofit2.Response<TweetResponse> response) {
                 if (response.isSuccessful()) {
                     TweetResponse tweetResponse = response.body();
-                    binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), tweetResponse.getStatuses()));
+                    if(binding !=null){
+                        binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), tweetResponse.getStatuses()));
+                    }
                 } else {
                     Log.d("BrowseFragment", "onResponse: Status Code" + response.code());
                 }

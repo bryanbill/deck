@@ -26,6 +26,7 @@ import com.minty.deck.models.UserModel;
 import com.minty.deck.models.UserResponse;
 import com.minty.deck.utils.ApiClient;
 import com.minty.deck.utils.Navigator;
+import com.minty.deck.utils.ServiceLocator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,13 +48,14 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        UserModel user = ServiceLocator.getInstance().getUserDao().getUser();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false);
         binding.recyclerView.setLayoutManager(linearLayoutManager);
         binding.recyclerViewTweets.setLayoutManager(new LinearLayoutManager(getContext()));
 
         twitterApi = ApiClient.getClient();
-        Call<UserResponse> call = twitterApi.getFollowers("__omondi");
+        Call<UserResponse> call = twitterApi.getFollowers(user.getUserName());
         List<User> users = new ArrayList<>();
         List<Status> statuses = new ArrayList<>();
         call.enqueue(new retrofit2.Callback<UserResponse>() {

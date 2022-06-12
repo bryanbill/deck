@@ -1,6 +1,7 @@
 package com.minty.deck.ui.sheets;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,8 @@ public class ModalBottomSheet extends BottomSheetDialogFragment {
                             // reload adapter
                             dismiss();
                         }else{
-                            Toast.makeText(getContext(), "Error posting tweet, Code: "+response.code(), Toast.LENGTH_SHORT).show();
+                            Log.d("ModalBottomSheet", "onResponse: " + response.message());
+                            Toast.makeText(getContext(), response.message()+" Error posting tweet, Code: "+response.code(), Toast.LENGTH_SHORT).show();
                         }
                     }
 

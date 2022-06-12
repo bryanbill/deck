@@ -15,7 +15,8 @@ public class UserDao implements IUser {
                 authResult.getUser().getDisplayName(),
                 authResult.getUser().getPhotoUrl().toString(),
                 authResult.getAdditionalUserInfo().getProfile().get("description").toString(),
-                authResult.getAdditionalUserInfo().getProfile().get("location").toString()
+                authResult.getAdditionalUserInfo().getProfile().get("location").toString(),
+                authResult
         );
     }
 

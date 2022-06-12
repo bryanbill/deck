@@ -1,5 +1,7 @@
 package com.minty.deck.models;
 
+import com.google.firebase.auth.AuthResult;
+
 public class UserModel {
     private String id;
     private String userName;
@@ -7,20 +9,26 @@ public class UserModel {
     private String profileImageUrl;
     private String bio;
     private String location;
+    private AuthResult authResult;
     private static UserModel userModel;
     public UserModel(String id,String userName,
                      String displayName, String profileImageUrl,
-                     String bio, String location) {
+                     String bio, String location, AuthResult authResult) {
         this.id = id;
         this.userName = userName;
         this.displayName = displayName;
         this.profileImageUrl = profileImageUrl;
         this.bio = bio;
         this.location = location;
+        this.authResult =authResult;
         userModel = this;
     }
     public String getId() {
         return id;
+    }
+
+    public AuthResult authResult(){
+        return this.authResult;
     }
 
     public void setId(String id) {
