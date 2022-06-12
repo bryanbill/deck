@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -101,6 +102,36 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
                 Log.d("HomeFragment", "onFailure: " + t.getMessage());
+            }
+        });
+        List<Status> searchResults = new ArrayList<>();
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchResults.clear();
+                for (Status status : statuses) {
+                    if (status.getText()
+                            .toLowerCase()
+                            .contains(query.toLowerCase())
+                            || status.getRetweetedStatus()
+                            != null && status.getRetweetedStatus()
+                            .getText()
+                            .toLowerCase()
+                            .contains(query.toLowerCase())) {
+                        searchResults.add(status);
+                    }
+                }
+                if (searchResults.size() > 0) {
+                    binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), searchResults));
+                } else {
+                    Toast.makeText(getContext(), "No results found", Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
 
