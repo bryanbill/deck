@@ -1,22 +1,20 @@
 package com.minty.deck.ui.home;
 
-import android.os.Build;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.minty.deck.R;
 import com.minty.deck.adapters.StoryAdapter;
 import com.minty.deck.adapters.TweetAdapter;
 import com.minty.deck.databinding.FragmentHomeBinding;
@@ -26,7 +24,6 @@ import com.minty.deck.models.User;
 import com.minty.deck.models.UserModel;
 import com.minty.deck.models.UserResponse;
 import com.minty.deck.utils.ApiClient;
-import com.minty.deck.utils.Navigator;
 import com.minty.deck.utils.ServiceLocator;
 
 import java.util.ArrayList;
@@ -150,5 +147,24 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public  void onPause(){
+        super.onPause();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        UserModel user = ServiceLocator.getInstance().getUserDao().getUser();
+        editor.putString("userName", user.getUserName());
+        editor.apply();
+    }
+
+    @Override
+    public  void onResume(){
+        super.onResume();
+        SharedPreferences sharedPreferences = getActivity()
+                .getSharedPreferences("user", Context.MODE_PRIVATE);
+        String userName = sharedPreferences.getString("userName", "");
+        Toast.makeText(getContext(), "Welcome " + userName, Toast.LENGTH_SHORT).show();
     }
 }
