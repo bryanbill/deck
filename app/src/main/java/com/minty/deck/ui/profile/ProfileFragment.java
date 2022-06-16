@@ -1,31 +1,24 @@
 package com.minty.deck.ui.profile;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.minty.deck.R;
 import com.minty.deck.adapters.TweetAdapter;
 import com.minty.deck.databinding.FragmentProfileBinding;
 import com.minty.deck.interfaces.ITwitterApi;
 import com.minty.deck.models.Status;
-import com.minty.deck.models.TweetResponse;
 import com.minty.deck.models.UserModel;
 import com.minty.deck.utils.ApiClient;
 import com.minty.deck.utils.ServiceLocator;
 
-import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -80,7 +73,6 @@ public class ProfileFragment extends Fragment {
             binding.recyclerViewTweets
                     .setVisibility(View.GONE);
         }
-
         return root;
     }
 

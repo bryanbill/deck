@@ -81,7 +81,6 @@ public class HomeFragment extends Fragment {
                                         }
                                     }
                                 }
-
                                 @Override
                                 public void onFailure(Call<List<Status>> call, Throwable t) {
                                     Log.d("HomeViewModel", "onFailure: " + t.getMessage());
