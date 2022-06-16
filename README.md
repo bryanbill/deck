@@ -10,7 +10,7 @@
 
 ## Overall Project Description
 
-- Deck is a Twitter Client App for tracking your favorite tweets, users and hashtags.
+- Deck is a Twitter Client App that declutters your timeline to focus on tweets that matter
 
 ## Setup Instructions
 
