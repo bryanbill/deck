@@ -48,13 +48,16 @@ public class BrowseFragment extends Fragment implements IHandler {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false);
         binding.recyclerViewTweets.setLayoutManager(linearLayoutManager);
-        browseTweets("Kenya");
+        browseTweets(browseViewModel
+                .getHashtag()
+                .getValue()
+                .get(0)
+                .getHashtag());
 
         binding.recyclerViewTweets.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-              //  Toast.makeText(getContext(), "Scrolled: " + dy, Toast.LENGTH_SHORT).show();
                 if (dy > 0) {
                     binding.hashtagLayout.setVisibility(View.GONE);
                 } else if(!recyclerView.canScrollVertically(-1)) {
