@@ -101,6 +101,19 @@ public class HomeFragment extends Fragment {
             }
         });
         List<Status> searchResults = new ArrayList<>();
+
+        binding.fabSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Hide the Fab button
+                binding.fabSearch.setVisibility(View.GONE);
+                //Show the SearchView
+                binding.searchView.setVisibility(View.VISIBLE);
+                //Expand the SearchView
+                binding.searchView.setIconified(false);
+            }
+        });
+
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -134,6 +147,13 @@ public class HomeFragment extends Fragment {
         binding.searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
+                //Hide the SearchView
+                binding.searchView.setVisibility(View.GONE);
+                //Show the Fab button
+                binding.fabSearch.setVisibility(View.VISIBLE);
+                //Clear the search results
+                searchResults.clear();
+
                 binding.recyclerViewTweets.setAdapter(new TweetAdapter(getContext(), statuses));
                 return false;
             }
