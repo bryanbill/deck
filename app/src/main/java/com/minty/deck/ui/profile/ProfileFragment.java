@@ -34,6 +34,8 @@ public class ProfileFragment extends Fragment implements GestureDetector.OnDoubl
 
     private GestureDetector gestureDetector;
 
+    private boolean isHidden = false;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         UserModel user = ServiceLocator.getInstance().getUserDao().getUser();
@@ -80,7 +82,17 @@ public class ProfileFragment extends Fragment implements GestureDetector.OnDoubl
         }
 
         binding.fragmentProfile.setOnLongClickListener(v -> {
-            Toast.makeText(getContext(), "Long Click", Toast.LENGTH_SHORT).show();
+            if(isHidden){
+                binding.materialCardView.setVisibility(View.VISIBLE);
+                binding.profileName.setVisibility(View.VISIBLE);
+                binding.userName.setVisibility(View.VISIBLE);
+
+                isHidden = false;
+                return true;
+            }
+            binding.materialCardView.setVisibility(View.GONE);
+            binding.profileName.setVisibility(View.GONE);
+            binding.userName.setVisibility(View.GONE);
             return true;
         });
         return root;
