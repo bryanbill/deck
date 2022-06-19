@@ -76,10 +76,15 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         } else {
             //If it is not a retweet, set the text to the original status
             holder.tweet.setText(tweetList.get(position).getText());
-            Glide.with(context)
-                    .load(tweetList.get(position)
-                            .getUser().getProfileBannerUrl())
 
+            String banner = tweetList.get(position)
+                    .getUser().getProfileBannerUrl();
+
+            if(banner == null || banner.isEmpty()){
+                holder.imageView.setVisibility(View.GONE);
+            }
+            Glide.with(context)
+                    .load(banner)
                     .override(holder.imageView.getWidth(), holder.imageView.getHeight())
                     .centerCrop()
                     .into(holder.imageView);

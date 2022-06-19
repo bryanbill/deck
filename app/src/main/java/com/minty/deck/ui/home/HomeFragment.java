@@ -184,6 +184,6 @@ public class HomeFragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity()
                 .getSharedPreferences("user", Context.MODE_PRIVATE);
         String userName = sharedPreferences.getString("userName", "");
-        Toast.makeText(getContext(), "Welcome " + userName, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "Welcome " + userName, Toast.LENGTH_SHORT).show();
     }
 }
