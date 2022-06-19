@@ -86,13 +86,13 @@ public class ProfileFragment extends Fragment implements GestureDetector.OnDoubl
                 binding.materialCardView.setVisibility(View.VISIBLE);
                 binding.profileName.setVisibility(View.VISIBLE);
                 binding.userName.setVisibility(View.VISIBLE);
-
                 isHidden = false;
                 return true;
             }
             binding.materialCardView.setVisibility(View.GONE);
             binding.profileName.setVisibility(View.GONE);
             binding.userName.setVisibility(View.GONE);
+            isHidden = true;
             return true;
         });
         return root;
