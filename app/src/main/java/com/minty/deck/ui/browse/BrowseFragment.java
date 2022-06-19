@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -53,9 +54,10 @@ public class BrowseFragment extends Fragment implements IHandler {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+              //  Toast.makeText(getContext(), "Scrolled: " + dy, Toast.LENGTH_SHORT).show();
                 if (dy > 0) {
                     binding.hashtagLayout.setVisibility(View.GONE);
-                } else {
+                } else if(!recyclerView.canScrollVertically(-1)) {
                     binding.hashtagLayout.setVisibility(View.VISIBLE);
                 }
             }
