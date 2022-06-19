@@ -35,9 +35,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        binding.floatingActionButton.setOnClickListener(v -> {
-            new ModalBottomSheet().show(getSupportFragmentManager(), "ModalBottomSheet");
-        });
+
     }
 
 }
