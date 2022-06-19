@@ -2,6 +2,7 @@ package com.minty.deck.ui.profile;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +24,13 @@ import java.util.List;
 
 import retrofit2.Call;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements GestureDetector.OnDoubleTapListener {
 
     private FragmentProfileBinding binding;
 
     ITwitterApi twitterApi;
+
+    private GestureDetector gestureDetector;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
