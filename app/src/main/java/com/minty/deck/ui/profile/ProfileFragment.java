@@ -84,30 +84,29 @@ public class ProfileFragment extends Fragment implements GestureDetector.OnDoubl
         binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(isHidden){
-                   binding.floatingActionButton.setImageDrawable(
-                           getResources().getDrawable(
-                           R.drawable.ic_expand));
-                     binding.materialCardView.setVisibility(View.VISIBLE);
-                        binding.profileName.setVisibility(View.VISIBLE);
-                        binding.userName.setVisibility(View.VISIBLE);
-                        isHidden = false;
-               }
-                else{
-                     binding.floatingActionButton.setImageDrawable(
+                if (isHidden) {
+                    binding.floatingActionButton.setImageDrawable(
                             getResources().getDrawable(
-                            R.drawable.ic_minimize));
-                     binding.materialCardView.setVisibility(View.GONE);
-                     binding.profileName.setVisibility(View.GONE);
-                     binding.userName.setVisibility(View.GONE);
-                     isHidden = true;
+                                    R.drawable.ic_expand));
+                    binding.materialCardView.setVisibility(View.VISIBLE);
+                    binding.profileName.setVisibility(View.VISIBLE);
+                    binding.userName.setVisibility(View.VISIBLE);
+                    isHidden = false;
+                } else {
+                    binding.floatingActionButton.setImageDrawable(
+                            getResources().getDrawable(
+                                    R.drawable.ic_minimize));
+                    binding.materialCardView.setVisibility(View.GONE);
+                    binding.profileName.setVisibility(View.GONE);
+                    binding.userName.setVisibility(View.GONE);
+                    isHidden = true;
                 }
             }
         });
         binding.fragmentProfile.setOnLongClickListener(v -> {
             binding.floatingActionButton.setImageDrawable(
                     getResources().getDrawable(
-                            R.drawable.ic_expand));
+                            R.drawable.ic_minimize));
             binding.materialCardView.setVisibility(View.GONE);
             binding.profileName.setVisibility(View.GONE);
             binding.userName.setVisibility(View.GONE);
