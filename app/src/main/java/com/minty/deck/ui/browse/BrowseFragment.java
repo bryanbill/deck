@@ -48,19 +48,14 @@ public class BrowseFragment extends Fragment implements IHandler {
                 LinearLayoutManager.VERTICAL, false);
         binding.recyclerViewTweets.setLayoutManager(linearLayoutManager);
         browseTweets("Kenya");
-        final int originalHeight = binding.hashtagTweets.getLayoutParams().height;
-        final int originalHeight2 = binding.hashtagLayout.getLayoutParams().height;
+
         binding.recyclerViewTweets.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy > 0) {
                     binding.hashtagLayout.setVisibility(View.GONE);
-                    binding.hashtagLayout.getLayoutParams().height = 0;
-                    binding.hashtagTweets.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
                 } else {
-                    binding.hashtagLayout.getLayoutParams().height = originalHeight2;
-                    binding.hashtagTweets.getLayoutParams().height = originalHeight;
                     binding.hashtagLayout.setVisibility(View.VISIBLE);
                 }
             }

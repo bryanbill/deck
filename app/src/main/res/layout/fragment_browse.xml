@@ -12,29 +12,16 @@
         android:layout_height="310sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerHash"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/hashtag_tweets"
-        android:layout_width="417dp"
-        android:layout_height="420dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hashtagLayout">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewTweets"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            tools:layout_editor_absoluteX="1dp" />
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@+id/hashtagLayout"
+        android:id="@+id/recyclerViewTweets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
