@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
+import com.minty.deck.R;
 import com.minty.deck.adapters.TweetAdapter;
 import com.minty.deck.databinding.FragmentProfileBinding;
 import com.minty.deck.interfaces.ITwitterApi;
@@ -80,15 +81,33 @@ public class ProfileFragment extends Fragment implements GestureDetector.OnDoubl
             binding.recyclerViewTweets
                     .setVisibility(View.GONE);
         }
-
-        binding.fragmentProfile.setOnLongClickListener(v -> {
-            if(isHidden){
-                binding.materialCardView.setVisibility(View.VISIBLE);
-                binding.profileName.setVisibility(View.VISIBLE);
-                binding.userName.setVisibility(View.VISIBLE);
-                isHidden = false;
-                return true;
+        binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if(isHidden){
+                   binding.floatingActionButton.setImageDrawable(
+                           getResources().getDrawable(
+                           R.drawable.ic_expand));
+                     binding.materialCardView.setVisibility(View.VISIBLE);
+                        binding.profileName.setVisibility(View.VISIBLE);
+                        binding.userName.setVisibility(View.VISIBLE);
+                        isHidden = false;
+               }
+                else{
+                     binding.floatingActionButton.setImageDrawable(
+                            getResources().getDrawable(
+                            R.drawable.ic_minimize));
+                     binding.materialCardView.setVisibility(View.GONE);
+                     binding.profileName.setVisibility(View.GONE);
+                     binding.userName.setVisibility(View.GONE);
+                     isHidden = true;
+                }
             }
+        });
+        binding.fragmentProfile.setOnLongClickListener(v -> {
+            binding.floatingActionButton.setImageDrawable(
+                    getResources().getDrawable(
+                            R.drawable.ic_expand));
             binding.materialCardView.setVisibility(View.GONE);
             binding.profileName.setVisibility(View.GONE);
             binding.userName.setVisibility(View.GONE);
